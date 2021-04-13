@@ -221,12 +221,10 @@ class cwSaab():
         
         for i in range(1, self.depth):
             X = self.cwSaab_n_layer(X, train = True, layer = i)
-            
             if (self.split == False and self.SaabArgs[i]['cw'] == True):
                 self.depth = i
                 print("       <WARNING> Cannot futher split, actual depth: %s"%str(i))
                 break
-            
             print('=' * 45 + f'>c/w Saab Train Hop {i+1}')
             self.split = False
             
@@ -235,17 +233,14 @@ class cwSaab():
     def transform(self, X):
         '''
         Get feature for all the Hops
-
         Parameters
         ----------
         X: Input image (N, H, W, C), C=1 for grayscale, C=3 for color image
-        
         Returns
         -------
         output: a list of transformed feature maps
         '''
         assert (self.trained == True), "Must call fit first!"
-        
         output = []
         X = self.cwSaab_1_layer(X, train = False)
         output.append(X)
@@ -270,7 +265,6 @@ class cwSaab():
         output: transformed feature maps (N, H2, W2, C2)
         '''
         assert (self.trained == True), "Must call fit first!"
-        
         if layer==0:
             output = self.cwSaab_1_layer(X, train = False)
         else:
