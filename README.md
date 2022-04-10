@@ -25,4 +25,4 @@ In PixelHop++, for MNIST dataset, using 10000 Training images for CWSaab will ta
 
 In PixelHop, using same dataset, using 10000 Training images for Saab will take approximately 7GB memory, 60000 Training images for Saab will take approximately 14G memory. Note that different threshold value will give different memory usage.
 
-  **Note**: if Google Colab is recommended if there is not enough memory on your machine. 
+  **Note**: Google Colab is recommended if there is not enough memory on your machine. 
