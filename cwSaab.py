@@ -44,7 +44,6 @@ class cwSaab():
         Get saab features. 
         If train==True, remove leaf nodes using TH1, only leave the intermediate node's response
         '''
-        print(f'before transform Shape: {X.shape}')
         shrinkArg, SaabArg = self.shrinkArgs[layer], self.SaabArgs[layer]
         assert ('func' in shrinkArg.keys()), "shrinkArg must contain key 'func'!"
         X = shrinkArg['func'](X, shrinkArg)
@@ -56,7 +55,6 @@ class cwSaab():
             
         transformed = saab.transform(X)
         transformed = transformed.reshape(S[0],S[1],S[2],-1)
-        print(f'transformed Shape: {transformed.shape}')
         
         if train==True and self.SaabArgs[layer]['cw'] == True: # remove leaf nodes
             transformed = transformed[:, :, :, saab.Energy>self.TH1]
